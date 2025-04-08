@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,13 +26,13 @@
 
     .popup-content {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
     }
 
     .popup-content img {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       cursor: pointer;
     }
@@ -52,7 +51,7 @@
       text-align: center;
       line-height: 40px;
       cursor: pointer;
-      z-index: 2000;
+      z-index: 2001;
     }
   </style>
 </head>
@@ -68,31 +67,32 @@
 
   <!-- Background Music -->
   <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/15/audio_5b1c7f8c1b.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/15/audio_5b1c7f8c1b.mp3?filename=calm-motivational-background-ambient-119418.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const music = document.getElementById("bg-music");
 
-    // Autoplay try on page load
+    // Try autoplay on load
     window.addEventListener("load", () => {
       music.play().catch(() => {
-        console.log("Autoplay blocked. Waiting for click to play music.");
+        console.log("Autoplay blocked. User interaction needed.");
       });
     });
 
-    // Play music on poster click
+    // Play music on any user interaction
     function playAudio() {
-      music.play();
+      music.play().catch(err => {
+        console.log("Play failed:", err);
+      });
     }
 
-    // Redirect to home
+    // Redirect after 5 seconds
     function redirectHome() {
       window.location.href = "https://sites.google.com/view/ghskhajhara/home";
     }
 
-    // Auto redirect after 5 seconds
     setTimeout(redirectHome, 5000);
   </script>
 
