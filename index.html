@@ -26,14 +26,16 @@
 
     .popup-content {
       position: relative;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
     }
 
     .popup-content img {
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
+      object-fit: contain;
+      max-width: 100vw;
+      max-height: 100vh;
       cursor: pointer;
     }
 
@@ -51,13 +53,12 @@
       text-align: center;
       line-height: 40px;
       cursor: pointer;
-      z-index: 2001;
+      z-index: 2000;
     }
   </style>
 </head>
 <body>
 
-  <!-- Popup Section -->
   <div class="popup-bg" id="popup">
     <div class="popup-content" onclick="playAudio()">
       <span class="close-btn" onclick="redirectHome()">×</span>
@@ -65,30 +66,24 @@
     </div>
   </div>
 
-  <!-- Background Music -->
   <audio id="bg-music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/15/audio_5b1c7f8c1b.mp3?filename=calm-motivational-background-ambient-119418.mp3" type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
     const music = document.getElementById("bg-music");
 
-    // Try autoplay on load
     window.addEventListener("load", () => {
       music.play().catch(() => {
-        console.log("Autoplay blocked. User interaction needed.");
+        console.log("Autoplay blocked. Touch poster to play music.");
       });
     });
 
-    // Play music on any user interaction
     function playAudio() {
-      music.play().catch(err => {
-        console.log("Play failed:", err);
-      });
+      music.play();
     }
 
-    // Redirect after 5 seconds
     function redirectHome() {
       window.location.href = "https://sites.google.com/view/ghskhajhara/home";
     }
