@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admission Popup</title>
-  <meta http-equiv="refresh" content="5;url=https://sites.google.com/view/ghskhajhara/home">
+  <title>Admission Poster</title>
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
-      background: rgba(0,0,0,0.9);
+      background-color: black;
+    }
+
+    .popup-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.95);
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 9999;
     }
 
-    .popup {
+    .popup-content {
       position: relative;
-      max-width: 90%;
-      max-height: 90%;
+      width: 95vw;
+      max-height: 95vh;
     }
 
-    .popup img {
-      max-width: 100%;
-      max-height: 100%;
+    .popup-content img {
+      width: 100%;
+      height: auto;
       border-radius: 10px;
+      box-shadow: 0 0 15px #fff;
     }
 
     .close-btn {
       position: absolute;
-      top: -10px;
-      right: -10px;
+      top: -15px;
+      right: -15px;
       background: white;
       color: black;
       border-radius: 50%;
@@ -42,13 +52,33 @@
       line-height: 40px;
       cursor: pointer;
       box-shadow: 0 0 10px #000;
+      z-index: 10000;
     }
   </style>
 </head>
 <body>
-  <div class="popup">
-    <span class="close-btn" onclick="window.location.replace('https://sites.google.com/view/ghskhajhara/home')">×</span>
-    <img src="https://i.postimg.cc/t4GWpbZN/20250407-215833-0000.png" alt="Admission Poster">
+
+  <div class="popup-bg" id="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      <img src="https://i.postimg.cc/t4GWpbZN/20250407-215833-0000.png" alt="Admission Poster">
+    </div>
   </div>
+
+  <!-- Background Music -->
+  <audio autoplay loop style="display:none;">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function closePopup() {
+      window.location.href = "https://sites.google.com/view/ghskhajhara/home";
+    }
+
+    // Auto redirect after 5 seconds
+    setTimeout(closePopup, 5000);
+  </script>
+
 </body>
 </html>
