@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
       height: 100%;
       background-color: black;
       overflow: hidden;
+      font-family: Arial, sans-serif;
     }
 
     .popup-bg {
@@ -26,20 +28,22 @@
 
     .popup-content {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      width: 80vw;
+      max-width: 800px;
+      height: auto;
     }
 
     .popup-content img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     .close-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: -15px;
+      right: -15px;
       width: 40px;
       height: 40px;
       background-color: white;
@@ -50,6 +54,7 @@
       text-align: center;
       line-height: 40px;
       cursor: pointer;
+      box-shadow: 0 0 10px #000;
       z-index: 2000;
     }
   </style>
@@ -58,19 +63,31 @@
 
   <!-- Popup Section -->
   <div class="popup-bg" id="popup">
-    <div class="popup-content">
+    <div class="popup-content" onclick="playAudio()">
       <span class="close-btn" onclick="redirectHome()">×</span>
       <img src="https://i.postimg.cc/t4GWpbZN/20250407-215833-0000.png" alt="Admission Poster">
     </div>
   </div>
 
   <!-- Background Music -->
-  <audio autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/15/audio_5b1c7f8c1b.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
+    const music = document.getElementById("bg-music");
+
+    window.addEventListener("load", () => {
+      music.play().catch(() => {
+        console.log("Autoplay blocked. Waiting for user interaction.");
+      });
+    });
+
+    function playAudio() {
+      music.play();
+    }
+
     function redirectHome() {
       window.location.href = "https://sites.google.com/view/ghskhajhara/home";
     }
