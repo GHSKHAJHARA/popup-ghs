@@ -10,7 +10,6 @@
       height: 100%;
       background-color: black;
       overflow: hidden;
-      font-family: Arial, sans-serif;
     }
 
     .popup-bg {
@@ -28,22 +27,21 @@
 
     .popup-content {
       position: relative;
-      width: 80vw;
-      max-width: 800px;
-      height: auto;
+      width: 100vw;
+      height: 100vh;
     }
 
     .popup-content img {
       width: 100%;
-      height: auto;
-      border-radius: 8px;
+      height: 100%;
+      object-fit: cover;
       cursor: pointer;
     }
 
     .close-btn {
       position: absolute;
-      top: -15px;
-      right: -15px;
+      top: 20px;
+      right: 20px;
       width: 40px;
       height: 40px;
       background-color: white;
@@ -54,7 +52,6 @@
       text-align: center;
       line-height: 40px;
       cursor: pointer;
-      box-shadow: 0 0 10px #000;
       z-index: 2000;
     }
   </style>
@@ -78,16 +75,19 @@
   <script>
     const music = document.getElementById("bg-music");
 
+    // Autoplay try on page load
     window.addEventListener("load", () => {
       music.play().catch(() => {
-        console.log("Autoplay blocked. Waiting for user interaction.");
+        console.log("Autoplay blocked. Waiting for click to play music.");
       });
     });
 
+    // Play music on poster click
     function playAudio() {
       music.play();
     }
 
+    // Redirect to home
     function redirectHome() {
       window.location.href = "https://sites.google.com/view/ghskhajhara/home";
     }
