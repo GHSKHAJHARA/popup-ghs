@@ -57,18 +57,19 @@
 
   <div class="popup-bg" id="popup">
     <div class="popup-content">
-      <span class="close-btn" onclick="closePopup()">×</span>
+      <span class="close-btn" onclick="redirectNow()">×</span>
       <img src="https://i.postimg.cc/t4GWpbZN/20250407-215833-0000.png" alt="Admission Poster">
     </div>
   </div>
 
   <script>
-    let redirectTimer = setTimeout(closePopup, 5000); // Save timer
-
-    function closePopup() {
-      clearTimeout(redirectTimer); // Stop timer if already closing
-      window.location.href = "https://sites.google.com/view/ghskhajhara/home";
+    // Redirect function
+    function redirectNow() {
+      window.location.replace("https://sites.google.com/view/ghskhajhara/home");
     }
+
+    // Auto redirect after 5 seconds
+    setTimeout(redirectNow, 5000);
   </script>
 
 </body>
